@@ -8,8 +8,8 @@
 #include <time.h>
 
 #define VERSION_STRING "beep"
-char *copyright = "Copyright (C) Louis Abraham, 2017.  "
-                  "Use and Distribution subject to GPL.  "
+char *copyright = "Copyright (C) Louis Abraham, 2017."
+                  "Use and Distribution subject to GPLv3."
                   "For information: http://www.gnu.org/copyleft/.";
 
 static const float PI = 3.1415926535f;
