@@ -1,8 +1,9 @@
 beep
 ====
 
-A cross platform implementation of [beep](http://www.johnath.com/beep/)
-based on [libsoundio](https://github.com/andrewrk/libsoundio).
+A cross-platform (Windows 7+, MacOS 10.10+, Linux 3.7+) implementation
+of [beep](http://www.johnath.com/beep/) based on
+[libsoundio](https://github.com/andrewrk/libsoundio).
 
 Check out https://github.com/ShaneMcC/beeps for cool files!
 
