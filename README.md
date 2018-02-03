@@ -7,6 +7,9 @@ of [beep](http://www.johnath.com/beep/) based on
 
 Check out https://github.com/ShaneMcC/beeps for cool files!
 
+You can also use https://github.com/tomas-teijeiro/wavtobeep with the
+`--silent` option to generate beep commands from a `.wav` file.
+
 Requirements
 ============
 
