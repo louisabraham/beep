@@ -20,3 +20,4 @@ TODO
 ====
 
 -   file input (`-s` and `-c` options)
+-   better smoothing for the beginning and end of the notes
