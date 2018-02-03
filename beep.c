@@ -210,10 +210,10 @@ static void write_callback(struct SoundIoOutStream *outstream,
             parms = next;
           }
         } else {
-          if ((ms_offset > 1000) && (parms->length > 1000)) {
-            rad_offset = fmod(rad_offset + 1000 * radians_per_ms, 2.0f * PI);
-            ms_offset -= 1000;
-            parms->length -= 1000;
+          if ((ms_offset > 500) && (parms->length > 500)) {
+            rad_offset = fmod(rad_offset + 500 * radians_per_ms, 2.0f * PI);
+            ms_offset -= 500;
+            parms->length -= 500;
           }
         }
       }
