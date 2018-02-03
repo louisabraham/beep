@@ -301,7 +301,8 @@ int main(int argc, char **argv) {
 
   double latency = 0;
   soundio_outstream_get_latency(outstream, &latency);
-  printf("lantecy %.02f", latency);
+  if(parms->verbose)
+    printf("lantency %.02f", latency);
   usleep((int)(1e6 * latency));
 
   while (parms) {
