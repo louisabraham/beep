@@ -21,4 +21,6 @@ TODO
 ====
 
 -   file input (`-s` and `-c` options)
--   better smoothing for the beginning and end of the notes
+-   better smoothing of the sound at the beginning and end of the notes
+    (continue the sound until it is under a threshold then set it 0
+    instead of doing an exponential decay)
