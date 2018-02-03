@@ -251,6 +251,7 @@ int main(int argc, char **argv) {
   parms->next = NULL;
 
   parse_command_line(argc, argv, parms);
+  int verbose = parms->verbose;
 
   int err;
   soundio = soundio_create();
@@ -278,8 +279,8 @@ int main(int argc, char **argv) {
     fprintf(stderr, "out of memory");
     return 1;
   }
-
-  fprintf(stderr, "Output device: %s\n", device->name);
+  if (verbose)
+    fprintf(stderr, "Output device: %s\n", device->name);
 
   struct SoundIoOutStream *outstream = soundio_outstream_create(device);
   outstream->format = SoundIoFormatFloat32NE;
@@ -301,7 +302,7 @@ int main(int argc, char **argv) {
 
   double latency = 0;
   soundio_outstream_get_latency(outstream, &latency);
-  if(parms->verbose)
+  if (verbose)
     printf("lantency %.02f", latency);
   usleep((int)(1e6 * latency));
 
