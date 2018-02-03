@@ -300,16 +300,16 @@ int main(int argc, char **argv) {
     return 1;
   }
 
+  while (parms) {
+    soundio_flush_events(soundio);
+    usleep((int)(1e4));
+  }
+
   double latency = 0;
   soundio_outstream_get_latency(outstream, &latency);
   if (verbose)
-    printf("lantency %.02f", latency);
+    printf("lantency %.02f\n", latency);
   usleep((int)(1e6 * latency));
-
-  while (parms) {
-    soundio_flush_events(soundio);
-    sleep(1);
-  }
 
   soundio_outstream_destroy(outstream);
   soundio_device_unref(device);
