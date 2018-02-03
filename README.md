@@ -2,11 +2,12 @@ blip
 ====
 
 A cross platform implementation of
-[beep](https://linux.die.net/man/1/beep) based on
+[beep](http://www.johnath.com/beep/) based on
 [libsoundio](https://github.com/andrewrk/libsoundio).
+
+Check out https://github.com/ShaneMcC/beeps for cool files!
 
 TODO
 ====
 
--   parse arguments
--   modify main
+-   file input (`-s` and `-c` options)
