@@ -178,7 +178,6 @@ static void write_callback(struct SoundIoOutStream *outstream,
 
     if (!frame_count)
       break;
-    // printf("abcd %.09f\n", ms_offset);
 
     for (int frame = 0; frame < frame_count; frame += 1) {
       ms_offset += ms_per_frame;
@@ -189,7 +188,7 @@ static void write_callback(struct SoundIoOutStream *outstream,
             ((parms->end_delay || (parms->reps >= 1)) ? parms->delay : 0);
 
         if (ms_offset > offset) {
-          
+
           // signal smoothing
           if (sample < 0.1) {
             // first order approximation of the sinus
@@ -199,11 +198,13 @@ static void write_callback(struct SoundIoOutStream *outstream,
             float radians_per_ms = parms->freq * 2.0f * PI / 1000;
             rad_offset = fmod(rad_offset + offset * radians_per_ms, 2.0f * PI);
           }
-          
+
           ms_offset -= offset;
           parms->reps--;
           if (!parms->reps) {
-            printf("freq %f length %i\n", parms->freq, parms->length);
+            if (parms->verbose)
+              printf("freq %f length %i delay %i\n", parms->freq, parms->length,
+                     parms->delay);
             beep_parms_t *next = parms->next;
             free(parms);
             parms = next;
@@ -229,15 +230,11 @@ static void write_callback(struct SoundIoOutStream *outstream,
       fprintf(stderr, "%s\n", soundio_strerror(err));
       exit(1);
     }
-    // printf("wrote\n");
     if (!parms) {
-      // printf("wakeup\n");
-      // soundio_wakeup(soundio);
       return;
     }
 
     frames_left -= frame_count;
-    // printf("frames_left %i\n", frames_left);
   }
 }
 
