@@ -187,6 +187,7 @@ static void write_callback(struct SoundIoOutStream *outstream,
             parms->length +
             ((parms->end_delay || (parms->reps >= 1)) ? parms->delay : 0);
 
+        float radians_per_ms = parms->freq * 2.0f * PI / 1000;
         if (ms_offset > offset) {
 
           // signal smoothing
@@ -195,7 +196,6 @@ static void write_callback(struct SoundIoOutStream *outstream,
             rad_offset = sample;
           } else {
             // continuous extension
-            float radians_per_ms = parms->freq * 2.0f * PI / 1000;
             rad_offset = fmod(rad_offset + offset * radians_per_ms, 2.0f * PI);
           }
 
@@ -208,6 +208,12 @@ static void write_callback(struct SoundIoOutStream *outstream,
             beep_parms_t *next = parms->next;
             free(parms);
             parms = next;
+          }
+        } else {
+          if ((ms_offset > 1000) && (parms->length > 1000)) {
+            rad_offset = fmod(rad_offset + 1000 * radians_per_ms, 2.0f * PI);
+            ms_offset -= 1000;
+            parms->length -= 1000;
           }
         }
       }
